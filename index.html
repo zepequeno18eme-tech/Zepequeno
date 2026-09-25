@@ -1,1 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080706">
+<title>La Galerie 25</title>
 
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080706;
+  --card:#12100d;
+  --card2:#18140f;
+  --gold:#d7aa4d;
+  --gold2:#ffe29a;
+  --text:#fff;
+  --muted:#a7a29a;
+  --border:rgba(215,170,77,.22);
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(circle at top right,rgba(215,170,77,.10),transparent 35%),
+    var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  padding-bottom:105px;
+}
+button,input{font:inherit}
+button{cursor:pointer}
+
+/* HEADER */
+.header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(8,7,6,.91);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.topbar{
+  height:84px;
+  display:grid;
+  grid-template-columns:50px 1fr 50px;
+  align-items:center;
+  padding:8px 16px;
+}
+.iconBtn{
+  width:43px;height:43px;border-radius:50%;
+  border:1px solid var(--border);
+  background:#12100d;color:var(--gold2);
+  font-size:22px;
+}
+.brand{text-align:center}
+.brandTitle{
+  font-family:Georgia,serif;
+  color:var(--gold2);
+  font-size:22px;
+  letter-spacing:2px;
+  font-weight:700;
+}
+.brandSub{
+  font-size:9px;color:#8f8269;
+  letter-spacing:4px;margin-top:4px
+}
+.cartWrap{position:relative}
+.cartCount{
+  position:absolute;right:-3px;top:-5px;
+  background:var(--gold);color:#000;
+  min-width:18px;height:18px;border-radius:20px;
+  font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center
+}
+
+/* SEARCH */
+.searchArea{padding:0 16px 14px}
+.search{
+  width:100%;height:46px;border-radius:15px;
+  border:1px solid var(--border);
+  background:#11100e;color:white;
+  padding:0 16px;outline:none;
+}
+.search:focus{border-color:var(--gold)}
+
+/* HERO */
+.hero{padding:18px 16px 10px}
+.heroBox{
+  border:1px solid var(--border);
+  background:
+    radial-gradient(circle at 75% 10%,rgba(255,216,126,.20),transparent 30%),
+    linear-gradient(135deg,#18140f,#090807);
+  border-radius:25px;padding:23px 20px;
+  box-shadow:0 15px 50px rgba(0,0,0,.35);
+}
+.heroSmall{
+  color:var(--gold);font-size:10px;
+  letter-spacing:3px;font-weight:700
+}
+.hero h1{
+  font-family:Georgia,serif;
+  font-size:31px;margin-top:8px;
+  line-height:1.05
+}
+.hero h1 span{color:var(--gold2)}
+.hero p{
+  color:#aaa39a;font-size:13px;
+  line-height:1.5;margin-top:11px
+}
+
+/* CATEGORIES */
+.categories{
+  display:flex;gap:9px;overflow:auto;
+  padding:10px 16px 17px;
+  scrollbar-width:none
+}
+.cat{
+  white-space:nowrap;border-radius:30px;
+  border:1px solid var(--border);
+  background:#11100e;color:#bdb7ad;
+  padding:10px 16px;font-size:12px
+}
+.cat.active{
+  color:#090807;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  font-weight:800
+}
+
+/* PRODUCTS */
+.sectionTitle{
+  display:flex;justify-content:space-between;
+  align-items:end;padding:6px 16px 14px
+}
+.sectionTitle h2{
+  font-family:Georgia,serif;font-size:23px
+}
+.sectionTitle span{color:#8d877e;font-size:12px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;padding:0 14px
+}
+.product{
+  overflow:hidden;border-radius:19px;
+  background:linear-gradient(145deg,#15130f,#0e0d0b);
+  border:1px solid var(--border);
+}
+.productImage{
+  height:180px;
+  background:
+    radial-gradient(circle at 50% 30%,#3b3020,#15120e 60%,#0b0a09);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;font-size:62px
+}
+.badge{
+  position:absolute;left:9px;top:9px;
+  background:rgba(8,7,6,.82);
+  border:1px solid var(--border);
+  color:var(--gold2);
+  padding:6px 8px;border-radius:20px;
+  font-size:8px;font-weight:800;
+  letter-spacing:.7px
+}
+.heart{
+  position:absolute;right:9px;top:9px;
+  width:30px;height:30px;border-radius:50%;
+  background:rgba(8,7,6,.75);
+  border:1px solid var(--border);
+  color:white;font-size:15px
+}
+.productInfo{padding:12px}
+.brandName{
+  color:var(--gold);font-size:9px;
+  letter-spacing:1.4px;font-weight:800
+}
+.productName{
+  font-size:14px;font-weight:650;
+  margin-top:5px;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis
+}
+.price{
+  font-family:Georgia,serif;
+  color:var(--gold2);
+  font-size:17px;margin-top:8px
+}
+.add{
+  margin-top:10px;width:100%;border:none;
+  border-radius:11px;padding:10px 5px;
+  background:#211b12;color:var(--gold2);
+  border:1px solid var(--border);
+  font-size:11px;font-weight:700
+}
+
+/* BOTTOM NAV */
+.bottomNav{
+  position:fixed;z-index:30;
+  left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));
+  height:72px;border-radius:22px;
+  background:rgba(16,14,11,.96);
+  border:1px solid var(--border);
+  backdrop-filter:blur(20px);
+  display:grid;grid-template-columns:repeat(3,1fr);
+  box-shadow:0 10px 40px #000
+}
+.navBtn{
+  border:0;background:transparent;
+  color:#77736d;font-size:10px;
+  display:flex;flex-direction:column;
+  gap:5px;align-items:center;justify-content:center
+}
+.navBtn .ico{font-size:21px}
+.navBtn.active{color:var(--gold2)}
+
+/* SIDE MENU */
+.overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.67);z-index:90
+}
+.overlay.show{display:block}
+.drawer{
+  width:82%;max-width:330px;height:100%;
+  background:#0d0c0a;
+  border-right:1px solid var(--border);
+  padding:28px 18px
+}
+.drawerLogo{
+  border-bottom:1px solid var(--border);
+  padding:20px 5px 25px
+}
+.drawerLogo h2{
+  font-family:Georgia,serif;color:var(--gold2)
+}
+.drawerLogo p{color:#777;font-size:11px;margin-top:5px}
+.drawerItem{
+  margin-top:20px;width:100%;padding:16px;
+  text-align:left;border-radius:15px;
+  background:#15120e;color:white;
+  border:1px solid var(--border)
+}
+
+/* PAGES */
+.page{display:none}
+.page.active{display:block}
+.empty{
+  margin:40px 16px;padding:35px 20px;
+  border-radius:22px;border:1px solid var(--border);
+  background:#11100e;text-align:center
+}
+.emptyIcon{font-size:45px;margin-bottom:15px}
+.empty h2{font-family:Georgia,serif;color:var(--gold2)}
+.empty p{color:#888;font-size:13px;line-height:1.5;margin-top:10px}
+
+/* ACCOUNT */
+.accountCard{
+  margin:20px 16px;padding:24px 18px;
+  background:#11100e;border:1px solid var(--border);
+  border-radius:22px
+}
+.avatar{
+  width:70px;height:70px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold2),#8e6629);
+  display:flex;align-items:center;justify-content:center;
+  color:#000;font-size:30px;margin-bottom:16px
+}
+.accountCard h2{font-family:Georgia,serif}
+.accountCard p{color:#888;margin-top:6px;font-size:13px}
+.accountRow{
+  margin-top:14px;padding:15px;border-radius:14px;
+  background:#181511;border:1px solid rgba(255,255,255,.04)
+}
+
+/* TOAST */
+.toast{
+  position:fixed;z-index:100;
+  left:50%;transform:translateX(-50%);
+  bottom:105px;
+  background:var(--gold2);color:#111;
+  padding:12px 18px;border-radius:30px;
+  font-size:12px;font-weight:800;
+  display:none
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="topbar">
+    <button class="iconBtn" onclick="openMenu()">☰</button>
+
+    <div class="brand">
+      <div class="brandTitle">LA GALERIE 25</div>
+      <div class="brandSub">BESANÇON</div>
+    </div>
+
+    <div class="cartWrap">
+      <button class="iconBtn" onclick="showCart()">🛍</button>
+      <span class="cartCount" id="cartCount">0</span>
+    </div>
+  </div>
+
+  <div class="searchArea" id="searchArea">
+    <input
+      class="search"
+      id="search"
+      placeholder="Rechercher un produit..."
+      oninput="filterProducts()"
+    >
+  </div>
+</header>
+
+<main>
+
+<section id="productsPage" class="page active">
+
+  <div class="hero">
+    <div class="heroBox">
+      <div class="heroSmall">LA GALERIE 25 • COLLECTION</div>
+      <h1>L'élégance dans<br><span>chaque détail.</span></h1>
+      <p>Découvrez notre sélection de sacs et accessoires.</p>
+    </div>
+  </div>
+
+  <div class="categories">
+    <button class="cat active" onclick="category(this,'all')">Tout</button>
+    <button class="cat" onclick="category(this,'sacs')">Sacs</button>
+    <button class="cat" onclick="category(this,'portefeuilles')">Portefeuilles</button>
+    <button class="cat" onclick="category(this,'bijoux')">Bijoux</button>
+    <button class="cat" onclick="category(this,'accessoires')">Accessoires</button>
+  </div>
+
+  <div class="sectionTitle">
+    <h2>Nos produits</h2>
+    <span id="productCount">6 articles</span>
+  </div>
+
+  <div class="grid" id="productGrid"></div>
+
+</section>
+
+<section id="ordersPage" class="page">
+  <div class="empty">
+    <div class="emptyIcon">📦</div>
+    <h2>Mes commandes</h2>
+    <p>Vos prochaines commandes apparaîtront ici avec leur statut.</p>
+  </div>
+</section>
+
+<section id="accountPage" class="page">
+  <div class="accountCard">
+    <div class="avatar">♛</div>
+    <h2>Mon compte</h2>
+    <p>Bienvenue chez La Galerie 25.</p>
+
+    <div class="accountRow">👤 Informations personnelles</div>
+    <div class="accountRow">📍 Mes adresses</div>
+    <div class="accountRow">♡ Mes favoris</div>
+    <div class="accountRow">💬 Nous contacter</div>
+  </div>
+</section>
+
+</main>
+
+<div class="overlay" id="overlay" onclick="closeMenu(event)">
+  <div class="drawer">
+    <div class="drawerLogo">
+      <h2>LA GALERIE 25</h2>
+      <p>BOUTIQUE • BESANÇON</p>
+    </div>
+
+    <button class="drawerItem" onclick="admin()">⚙️ Administration</button>
+  </div>
+</div>
+
+<nav class="bottomNav">
+  <button class="navBtn active" id="navProducts" onclick="navigate('products')">
+    <span class="ico">◈</span>
+    Produits
+  </button>
+
+  <button class="navBtn" id="navOrders" onclick="navigate('orders')">
+    <span class="ico">▣</span>
+    Commandes
+  </button>
+
+  <button class="navBtn" id="navAccount" onclick="navigate('account')">
+    <span class="ico">♙</span>
+    Mon compte
+  </button>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const products = [
+  {
+    id:1,
+    brand:"CHANEL",
+    name:"Sac Classique Noir",
+    price:189,
+    cat:"sacs",
+    emoji:"👜",
+    badge:"BEST SELLER"
+  },
+  {
+    id:2,
+    brand:"CHANEL",
+    name:"Sac Rose Matelassé",
+    price:179,
+    cat:"sacs",
+    emoji:"👛",
+    badge:"NOUVEAU"
+  },
+  {
+    id:3,
+    brand:"SAINT LAURENT",
+    name:"Portefeuille Noir",
+    price:89,
+    cat:"portefeuilles",
+    emoji:"👝",
+    badge:""
+  },
+  {
+    id:4,
+    brand:"FENDI",
+    name:"Sac Chaîne Noir",
+    price:159,
+    cat:"sacs",
+    emoji:"👜",
+    badge:"NOUVEAU"
+  },
+  {
+    id:5,
+    brand:"LOUIS VUITTON",
+    name:"Collier Doré",
+    price:69,
+    cat:"bijoux",
+    emoji:"📿",
+    badge:""
+  },
+  {
+    id:6,
+    brand:"LA GALERIE 25",
+    name:"Accessoire Premium",
+    price:49,
+    cat:"accessoires",
+    emoji:"✨",
+    badge:""
+  }
+];
+
+let cart = 0;
+let currentCategory = "all";
+
+function renderProducts(){
+  const search = document.getElementById("search").value.toLowerCase();
+
+  const filtered = products.filter(p => {
+    const categoryOK =
+      currentCategory === "all" || p.cat === currentCategory;
+
+    const searchOK =
+      p.name.toLowerCase().includes(search) ||
+      p.brand.toLowerCase().includes(search);
+
+    return categoryOK && searchOK;
+  });
+
+  document.getElementById("productCount").textContent =
+    filtered.length + " article" + (filtered.length > 1 ? "s" : "");
+
+  document.getElementById("productGrid").innerHTML =
+    filtered.map(p => `
+      <article class="product">
+        <div class="productImage">
+          ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
+          <button class="heart" onclick="favorite(event)">♡</button>
+          <span>${p.emoji}</span>
+        </div>
+
+        <div class="productInfo">
+          <div class="brandName">${p.brand}</div>
+          <div class="productName">${p.name}</div>
+          <div class="price">${p.price.toFixed(2).replace(".",",")} €</div>
+          <button class="add" onclick="addCart(${p.id})">
+            AJOUTER AU PANIER
+          </button>
+        </div>
+      </article>
+    `).join("");
+}
+
+function category(btn,cat){
+  document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));
+  btn.classList.add("active");
+  currentCategory=cat;
+  renderProducts();
+}
+
+function filterProducts(){
+  renderProducts();
+}
+
+function addCart(id){
+  cart++;
+  document.getElementById("cartCount").textContent=cart;
+  toast("Produit ajouté au panier");
+}
+
+function favorite(e){
+  e.stopPropagation();
+  e.target.textContent = e.target.textContent === "♡" ? "♥" : "♡";
+  e.target.style.color = e.target.textContent === "♥" ? "#f1c568" : "#fff";
+}
+
+function navigate(page){
+  document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll(".navBtn").forEach(x=>x.classList.remove("active"));
+
+  document.getElementById(page+"Page").classList.add("active");
+
+  const nav =
+    page==="products" ? "navProducts" :
+    page==="orders" ? "navOrders" :
+    "navAccount";
+
+  document.getElementById(nav).classList.add("active");
+
+  document.getElementById("searchArea").style.display =
+    page==="products" ? "block" : "none";
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function openMenu(){
+  document.getElementById("overlay").classList.add("show");
+}
+
+function closeMenu(e){
+  if(e.target.id==="overlay"){
+    document.getElementById("overlay").classList.remove("show");
+  }
+}
+
+function admin(){
+  document.getElementById("overlay").classList.remove("show");
+  toast("Administration bientôt disponible");
+}
+
+function showCart(){
+  if(cart===0){
+    toast("Votre panier est vide");
+  } else {
+    toast(cart+" article"+(cart>1?"s":"")+" dans votre panier");
+  }
+}
+
+function toast(text){
+  const t=document.getElementById("toast");
+  t.textContent=text;
+  t.style.display="block";
+
+  clearTimeout(window.toastTimer);
+  window.toastTimer=setTimeout(()=>{
+    t.style.display="none";
+  },1800);
+}
+
+renderProducts();
+</script>
+
+</body>
+</html>
