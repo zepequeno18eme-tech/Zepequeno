@@ -266,7 +266,182 @@ button{cursor:pointer}
   margin-top:14px;padding:15px;border-radius:14px;
   background:#181511;border:1px solid rgba(255,255,255,.04)
 }
+/* ADMINISTRATION */
+.adminPage{
+  min-height:100vh;
+  padding:20px 16px 120px;
+}
 
+.adminHeader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:22px;
+}
+
+.adminHeader h1{
+  font-family:Georgia,serif;
+  color:var(--gold2);
+  font-size:25px;
+}
+
+.adminBack{
+  border:1px solid var(--border);
+  background:#15120e;
+  color:var(--gold2);
+  padding:10px 14px;
+  border-radius:12px;
+}
+
+.adminTabs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.adminTab{
+  border:1px solid var(--border);
+  background:#11100e;
+  color:#aaa39a;
+  padding:14px;
+  border-radius:14px;
+  font-weight:700;
+}
+
+.adminTab.active{
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:#080706;
+}
+
+.adminPanel{
+  display:none;
+}
+
+.adminPanel.active{
+  display:block;
+}
+
+.adminTitle{
+  margin-bottom:15px;
+}
+
+.adminTitle h2{
+  font-family:Georgia,serif;
+  color:white;
+  font-size:22px;
+}
+
+.adminTitle p{
+  color:#888;
+  font-size:12px;
+  margin-top:5px;
+}
+
+.adminAdd{
+  width:100%;
+  padding:14px;
+  margin-bottom:15px;
+  border-radius:14px;
+  border:1px solid var(--gold);
+  background:#211b12;
+  color:var(--gold2);
+  font-weight:800;
+}
+
+.adminCard{
+  background:#11100e;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:15px;
+  margin-bottom:12px;
+}
+
+.adminCardTop{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+}
+
+.adminProductIcon{
+  width:52px;
+  height:52px;
+  border-radius:13px;
+  background:#1c1812;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:27px;
+  flex-shrink:0;
+}
+
+.adminProductInfo{
+  flex:1;
+}
+
+.adminProductInfo small{
+  color:var(--gold);
+  font-size:9px;
+  letter-spacing:1px;
+}
+
+.adminProductInfo h3{
+  font-size:14px;
+  margin-top:4px;
+}
+
+.adminProductInfo p{
+  color:var(--gold2);
+  margin-top:5px;
+  font-size:13px;
+}
+
+.adminActions{
+  display:flex;
+  gap:8px;
+  margin-top:13px;
+}
+
+.adminAction{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#181511;
+  color:white;
+  font-size:11px;
+}
+
+.adminAction.danger{
+  color:#ff8c8c;
+}
+
+.orderStatus{
+  display:inline-block;
+  margin-top:8px;
+  padding:6px 9px;
+  border-radius:20px;
+  background:#211b12;
+  color:var(--gold2);
+  font-size:10px;
+  font-weight:800;
+}
+
+.adminEmpty{
+  padding:35px 20px;
+  text-align:center;
+  background:#11100e;
+  border:1px solid var(--border);
+  border-radius:18px;
+  color:#888;
+}
+
+.adminEmpty span{
+  display:block;
+  font-size:40px;
+  margin-bottom:12px;
+}
 /* TOAST */
 .toast{
   position:fixed;z-index:100;
@@ -356,7 +531,63 @@ button{cursor:pointer}
     <div class="accountRow">💬 Nous contacter</div>
   </div>
 </section>
+<section id="adminPage" class="page adminPage">
 
+  <div class="adminHeader">
+    <div>
+      <h1>Administration</h1>
+    </div>
+
+    <button class="adminBack" onclick="leaveAdmin()">
+      ← Boutique
+    </button>
+  </div>
+
+  <div class="adminTabs">
+    <button
+      id="adminProductsTab"
+      class="adminTab active"
+      onclick="adminTab('products')"
+    >
+      👜 Produits
+    </button>
+
+    <button
+      id="adminOrdersTab"
+      class="adminTab"
+      onclick="adminTab('orders')"
+    >
+      📦 Commandes
+    </button>
+  </div>
+
+  <div id="adminProductsPanel" class="adminPanel active">
+
+    <div class="adminTitle">
+      <h2>Produits</h2>
+      <p>Gestion du catalogue La Galerie 25</p>
+    </div>
+
+    <button class="adminAdd" onclick="newProduct()">
+      ＋ AJOUTER UN PRODUIT
+    </button>
+
+    <div id="adminProductList"></div>
+
+  </div>
+
+  <div id="adminOrdersPanel" class="adminPanel">
+
+    <div class="adminTitle">
+      <h2>Commandes</h2>
+      <p>Gestion des commandes clients</p>
+    </div>
+
+    <div id="adminOrderList"></div>
+
+  </div>
+
+</section>
 </main>
 
 <div class="overlay" id="overlay" onclick="closeMenu(event)">
@@ -542,7 +773,23 @@ function closeMenu(e){
 
 function admin(){
   document.getElementById("overlay").classList.remove("show");
-  toast("Administration bientôt disponible");
+
+  document.querySelectorAll(".page").forEach(x=>{
+    x.classList.remove("active");
+  });
+
+  document.getElementById("adminPage").classList.add("active");
+
+  document.querySelector(".bottomNav").style.display="none";
+  document.getElementById("searchArea").style.display="none";
+
+  renderAdminProducts();
+  renderAdminOrders();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 }
 
 function showCart(){
@@ -563,7 +810,128 @@ function toast(text){
     t.style.display="none";
   },1800);
 }
+/* =========================
+   ADMINISTRATION
+========================= */
 
+let adminOrders = [];
+
+function adminTab(tab){
+  document.querySelectorAll(".adminTab").forEach(x=>{
+    x.classList.remove("active");
+  });
+
+  document.querySelectorAll(".adminPanel").forEach(x=>{
+    x.classList.remove("active");
+  });
+
+  if(tab==="products"){
+    document.getElementById("adminProductsTab").classList.add("active");
+    document.getElementById("adminProductsPanel").classList.add("active");
+  }else{
+    document.getElementById("adminOrdersTab").classList.add("active");
+    document.getElementById("adminOrdersPanel").classList.add("active");
+  }
+}
+
+function renderAdminProducts(){
+  const container = document.getElementById("adminProductList");
+
+  container.innerHTML = products.map(p=>`
+    <div class="adminCard">
+
+      <div class="adminCardTop">
+        <div class="adminProductIcon">
+          ${p.emoji}
+        </div>
+
+        <div class="adminProductInfo">
+          <small>${p.brand}</small>
+          <h3>${p.name}</h3>
+          <p>${p.price.toFixed(2).replace(".",",")} €</p>
+        </div>
+      </div>
+
+      <div class="adminActions">
+        <button class="adminAction" onclick="editProduct(${p.id})">
+          ✏️ Modifier
+        </button>
+
+        <button class="adminAction danger" onclick="deleteProduct(${p.id})">
+          🗑 Supprimer
+        </button>
+      </div>
+
+    </div>
+  `).join("");
+}
+
+function newProduct(){
+  toast("Ajout de produit : prochaine étape");
+}
+
+function editProduct(id){
+  const product = products.find(p=>p.id===id);
+
+  if(!product) return;
+
+  toast("Modifier : "+product.name);
+}
+
+function deleteProduct(id){
+  const product = products.find(p=>p.id===id);
+
+  if(!product) return;
+
+  toast("Suppression sécurisée à ajouter");
+}
+
+function renderAdminOrders(){
+  const container = document.getElementById("adminOrderList");
+
+  if(adminOrders.length===0){
+    container.innerHTML=`
+      <div class="adminEmpty">
+        <span>📦</span>
+        <strong>Aucune commande</strong>
+        <p style="margin-top:8px">
+          Les commandes apparaîtront ici.
+        </p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = adminOrders.map(order=>`
+    <div class="adminCard">
+      <div class="adminProductInfo">
+        <small>COMMANDE #${order.id}</small>
+        <h3>${order.client}</h3>
+        <p>${order.total} €</p>
+        <span class="orderStatus">${order.status}</span>
+      </div>
+    </div>
+  `).join("");
+}
+
+function leaveAdmin(){
+  document.getElementById("adminPage").classList.remove("active");
+  document.getElementById("productsPage").classList.add("active");
+
+  document.querySelector(".bottomNav").style.display="grid";
+  document.getElementById("searchArea").style.display="block";
+
+  document.querySelectorAll(".navBtn").forEach(x=>{
+    x.classList.remove("active");
+  });
+
+  document.getElementById("navProducts").classList.add("active");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
 renderProducts();
 </script>
 
