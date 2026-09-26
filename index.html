@@ -607,15 +607,16 @@ color:var(--gold2)
 border:0;
 background:transparent;
 color:#e88;
-font-size:11px
+font-size:12px
 }
 
 .totalBox{
-margin-top:20px;
+background:#15120e;
 border:1px solid var(--border);
-background:linear-gradient(145deg,#17130d,#0d0b08);
-border-radius:20px;
-padding:18px
+border-radius:19px;
+padding:18px;
+margin-top:18px;
+box-shadow:var(--glow)
 }
 
 .totalLine{
@@ -625,94 +626,77 @@ align-items:center
 }
 
 .totalLine strong{
-color:var(--gold2);
-font-size:21px
-}
-
-/* ===== FORMULAIRES ===== */
-
-.formCard{
-margin:20px 16px;
-background:linear-gradient(145deg,#12100d,#0b0a08);
-border:1px solid var(--border);
-border-radius:22px;
-padding:18px
-}
-
-.formCard h2{
 font-family:Georgia,serif;
 color:var(--gold2);
-font-size:23px
+font-size:24px
 }
 
-.formCard p{
+/* ===== FORMULAIRES + COMPTE ===== */
+
+.formCard,.accountCard{
+margin:20px 16px;
+padding:22px 18px;
+background:linear-gradient(145deg,#11100e,#0b0907);
+border:1px solid var(--border);
+border-radius:24px;
+box-shadow:0 18px 45px rgba(0,0,0,.24)
+}
+
+.formCard h2,.accountCard h2{
+font-family:Georgia,serif;
+color:var(--gold2)
+}
+
+.formCard>p,.accountCard>p{
 color:#888;
 font-size:12px;
-line-height:1.5;
-margin:8px 0 16px
+margin-top:6px;
+margin-bottom:16px
 }
 
 .formGroup{margin-top:12px}
 
 .formGroup label{
 display:block;
+color:#aaa;
 font-size:11px;
-color:#aaa39a;
 margin-bottom:6px
 }
 
-/* ===== COMPTE ===== */
-
-.accountCard{
-margin:20px 16px;
-background:
-radial-gradient(circle at 80% 0%,rgba(215,170,77,.13),transparent 30%),
-linear-gradient(145deg,#12100d,#0b0a08);
-border:1px solid var(--border);
-border-radius:25px;
-padding:22px;
-box-shadow:var(--glow)
+.formHint{
+color:#777;
+font-size:10px;
+line-height:1.4;
+margin-top:7px
 }
 
 .avatar{
-width:70px;
-height:70px;
-margin:auto;
+width:72px;
+height:72px;
 border-radius:50%;
-border:1px solid var(--gold);
+background:
+radial-gradient(circle at 35% 25%,#fff1bd,#d7aa4d 52%,#75501f);
 display:flex;
 align-items:center;
 justify-content:center;
-color:var(--gold2);
-font-size:29px;
-background:#19150f;
-box-shadow:0 0 25px rgba(215,170,77,.15)
-}
-
-.accountCard h2{
-text-align:center;
-font-family:Georgia,serif;
-margin-top:13px
-}
-
-.accountCard>p{
-text-align:center;
-color:#888;
-font-size:12px;
-margin-top:7px;
-margin-bottom:18px
+color:#080706;
+font-size:30px;
+margin-bottom:16px;
+box-shadow:0 0 28px rgba(215,170,77,.22)
 }
 
 .accountRow{
-width:100%;
 display:grid;
-grid-template-columns:52px 1fr;
+grid-template-columns:48px 1fr;
+grid-template-rows:auto auto;
+column-gap:12px;
 align-items:center;
+width:100%;
 text-align:left;
-margin-top:10px;
-padding:13px;
+margin-top:12px;
+padding:14px;
 border-radius:17px;
-background:linear-gradient(145deg,#17130f,#0e0c09);
+background:linear-gradient(145deg,#181511,#100d09);
 border:1px solid rgba(215,170,77,.18);
 color:white;
 transition:.18s
@@ -1233,8 +1217,7 @@ transition:none!important
 </style>
 </head>
 <body>
-
-<!-- ÉCRAN DE LANCEMENT -->
+  <!-- ÉCRAN DE LANCEMENT -->
 <div id="splash">
   <div class="splashInner">
     <div class="splashCrown">♛</div>
@@ -1243,7 +1226,6 @@ transition:none!important
     <div class="splashLine"></div>
   </div>
 </div>
-
 
 <!-- HEADER -->
 <header class="header">
@@ -1281,7 +1263,6 @@ transition:none!important
 
   </div>
 
-
   <div class="searchArea" id="searchArea">
 
     <input
@@ -1296,7 +1277,6 @@ transition:none!important
   </div>
 
 </header>
-
 
 <main>
 
@@ -1328,7 +1308,6 @@ transition:none!important
     </div>
 
   </div>
-
 
   <div class="categories">
 
@@ -1364,7 +1343,6 @@ transition:none!important
 
   </div>
 
-
   <div class="sectionTitle">
 
     <h2>
@@ -1375,14 +1353,12 @@ transition:none!important
 
   </div>
 
-
   <div
     class="grid"
     id="productGrid">
   </div>
 
 </section>
-
 
 <!-- =========================
      FICHE PRODUIT
@@ -1401,8 +1377,8 @@ transition:none!important
     <div id="productDetail"></div>
 
   </div>
-  </section>
 
+</section>
 
 <!-- =========================
      PANIER
@@ -1430,7 +1406,6 @@ transition:none!important
 
 </section>
 
-
 <!-- =========================
      CHECKOUT
 ========================= -->
@@ -1454,7 +1429,6 @@ transition:none!important
       de confirmer votre commande.
     </p>
 
-
     <div class="formGroup">
 
       <label>
@@ -1469,7 +1443,6 @@ transition:none!important
 
     </div>
 
-
     <div class="formGroup">
 
       <label>
@@ -1483,7 +1456,6 @@ transition:none!important
       >
 
     </div>
-
 
     <div class="formGroup">
 
@@ -1500,7 +1472,6 @@ transition:none!important
 
     </div>
 
-
     <div class="formGroup">
 
       <label>
@@ -1514,7 +1485,6 @@ transition:none!important
       >
 
     </div>
-
 
     <div class="formGroup">
 
@@ -1530,7 +1500,6 @@ transition:none!important
 
     </div>
 
-
     <div class="formGroup">
 
       <label>
@@ -1544,7 +1513,6 @@ transition:none!important
       >
 
     </div>
-
 
     <div class="formGroup">
 
@@ -1561,7 +1529,6 @@ transition:none!important
 
     </div>
 
-
     <div class="formGroup">
 
       <label>
@@ -1576,7 +1543,6 @@ transition:none!important
 
     </div>
 
-
     <button
       class="goldBtn primary"
       onclick="placeOrder()">
@@ -1586,7 +1552,6 @@ transition:none!important
   </div>
 
 </section>
-
 
 <!-- =========================
      MES COMMANDES
@@ -1605,7 +1570,6 @@ transition:none!important
   </div>
 
 </section>
-
 
 <!-- =========================
      MON COMPTE
@@ -1627,7 +1591,6 @@ transition:none!important
       Gérez vos informations et vos favoris.
     </p>
 
-
     <button
       class="accountRow"
       onclick="openProfile()">
@@ -1645,7 +1608,6 @@ transition:none!important
       </small>
 
     </button>
-
 
     <button
       class="accountRow"
@@ -1665,7 +1627,6 @@ transition:none!important
 
     </button>
 
-
     <button
       class="accountRow"
       onclick="openFavorites()">
@@ -1683,7 +1644,6 @@ transition:none!important
       </small>
 
     </button>
-
 
     <a
       class="accountRow"
@@ -1709,7 +1669,6 @@ transition:none!important
 
 </section>
 
-
 <!-- =========================
      INFORMATIONS PERSONNELLES
 ========================= -->
@@ -1733,7 +1692,6 @@ transition:none!important
       automatiquement lors de vos commandes.
     </p>
 
-
     <div class="formGroup">
 
       <label>Prénom</label>
@@ -1746,7 +1704,6 @@ transition:none!important
 
     </div>
 
-
     <div class="formGroup">
 
       <label>Nom</label>
@@ -1758,7 +1715,6 @@ transition:none!important
       >
 
     </div>
-
 
     <div class="formGroup">
 
@@ -1773,7 +1729,6 @@ transition:none!important
 
     </div>
 
-
     <button
       class="goldBtn primary"
       onclick="saveProfile()">
@@ -1783,7 +1738,6 @@ transition:none!important
   </div>
 
 </section>
-
 
 <!-- =========================
      ADRESSE
@@ -1808,7 +1762,6 @@ transition:none!important
       lors de votre prochaine commande.
     </p>
 
-
     <div class="formGroup">
 
       <label>Adresse</label>
@@ -1820,7 +1773,6 @@ transition:none!important
       >
 
     </div>
-
 
     <div class="formGroup">
 
@@ -1834,7 +1786,6 @@ transition:none!important
 
     </div>
 
-
     <div class="formGroup">
 
       <label>Ville</label>
@@ -1846,7 +1797,6 @@ transition:none!important
       >
 
     </div>
-
 
     <div class="formGroup">
 
@@ -1861,7 +1811,6 @@ transition:none!important
 
     </div>
 
-
     <button
       class="goldBtn primary"
       onclick="saveAddress()">
@@ -1871,7 +1820,6 @@ transition:none!important
   </div>
 
 </section>
-
 
 <!-- =========================
      FAVORIS
@@ -1897,7 +1845,6 @@ transition:none!important
 
 </section>
 
-
 <!-- =========================
      ADMINISTRATION
 ========================= -->
@@ -1918,7 +1865,6 @@ transition:none!important
 
   </div>
 
-
   <div class="adminTabs">
 
     <button
@@ -1937,7 +1883,6 @@ transition:none!important
 
   </div>
 
-
   <div
     id="adminProductsPanel"
     class="adminPanel active">
@@ -1955,18 +1900,15 @@ transition:none!important
 
     </div>
 
-
     <button
       class="adminAdd"
       onclick="newProduct()">
       ＋ AJOUTER UN PRODUIT
     </button>
 
-
     <div id="adminProductList"></div>
 
   </div>
-
 
   <div
     id="adminOrdersPanel"
@@ -1992,7 +1934,6 @@ transition:none!important
 
 </main>
 
-
 <!-- =========================
      MENU LATÉRAL
 ========================= -->
@@ -2016,7 +1957,6 @@ transition:none!important
 
     </div>
 
-
     <button
       class="drawerItem"
       onclick="admin()">
@@ -2026,7 +1966,6 @@ transition:none!important
   </div>
 
 </div>
-
 
 <!-- =========================
      NAVIGATION BAS
@@ -2049,7 +1988,6 @@ transition:none!important
 
   </button>
 
-
   <button
     class="navBtn"
     id="navOrders"
@@ -2062,7 +2000,6 @@ transition:none!important
     Commandes
 
   </button>
-
 
   <button
     class="navBtn"
@@ -2078,7 +2015,6 @@ transition:none!important
   </button>
 
 </nav>
-
 
 <!-- =========================
      MODALE PRODUIT ADMIN
@@ -2104,19 +2040,16 @@ transition:none!important
 
     </div>
 
-
     <input
       type="hidden"
       id="editProductId"
     >
-
 
     <div class="formGroup">
 
       <label>
         Photo du produit
       </label>
-
 
       <div class="photoPicker">
 
@@ -2125,7 +2058,6 @@ transition:none!important
           id="photoPreview">
           📷 Aucune photo
         </div>
-
 
         <div class="photoButtons">
 
@@ -2143,7 +2075,6 @@ transition:none!important
 
           </label>
 
-
           <button
             type="button"
             class="fileLabel"
@@ -2156,7 +2087,6 @@ transition:none!important
       </div>
 
     </div>
-
 
     <div class="formGroup">
 
@@ -2172,7 +2102,6 @@ transition:none!important
 
     </div>
 
-
     <div class="formGroup">
 
       <label>
@@ -2186,7 +2115,6 @@ transition:none!important
       >
 
     </div>
-
 
     <div class="formGroup">
 
@@ -2203,29 +2131,6 @@ transition:none!important
       >
 
     </div>
-
-
-    <div class="formGroup">
-
-      <label>
-        Prix promo (€) — facultatif
-      </label>
-
-      <input
-        class="field"
-        id="adminPromoPrice"
-        type="number"
-        min="0"
-        step="0.01"
-        placeholder="Ex. 79"
-      >
-
-      <div class="formHint">
-        Laissez vide s'il n'y a pas de promotion.
-      </div>
-
-    </div>
-
 
     <div class="formGroup">
 
@@ -2257,7 +2162,6 @@ transition:none!important
 
     </div>
 
-
     <div class="formGroup">
 
       <label>
@@ -2271,7 +2175,6 @@ transition:none!important
       >
 
     </div>
-
 
     <div class="formGroup">
 
@@ -2287,7 +2190,6 @@ transition:none!important
 
     </div>
 
-
     <button
       class="goldBtn primary"
       onclick="saveProduct()">
@@ -2298,13 +2200,11 @@ transition:none!important
 
 </div>
 
-
 <div
   class="toast"
   id="toast">
 </div>
-
-<script>
+  <script>
 
 /* =========================
    PRODUITS DE BASE
@@ -2379,7 +2279,6 @@ const defaultProducts = [
 }
 ];
 
-
 /* =========================
    STOCKAGE
 ========================= */
@@ -2411,7 +2310,6 @@ zip:""
 
 let currentCategory = "all";
 let temporaryPhoto = "";
-
 
 /* =========================
    OUTILS
@@ -2462,53 +2360,6 @@ function money(value){
   .replace(".",",") + " €";
 }
 
-function hasPromo(product){
-
-  const promo =
-  Number(product.promoPrice);
-
-  const normal =
-  Number(product.price);
-
-  return (
-    Number.isFinite(promo)
-    &&
-    promo > 0
-    &&
-    promo < normal
-  );
-}
-
-function effectivePrice(product){
-
-  return hasPromo(product)
-  ? Number(product.promoPrice)
-  : Number(product.price);
-}
-
-function priceHtml(product){
-
-  if(hasPromo(product)){
-
-    return `
-      <span class="oldPrice">
-        ${money(product.price)}
-      </span>
-
-      <span class="promoPrice">
-        ${money(product.promoPrice)}
-      </span>
-    `;
-  }
-
-  return `
-    <span class="normalPrice">
-      ${money(product.price)}
-    </span>
-  `;
-}
-
-
 function toast(text){
 
   const element =
@@ -2555,7 +2406,6 @@ function updateCartCount(){
   );
 }
 
-
 /* =========================
    PRODUITS
 ========================= */
@@ -2567,7 +2417,6 @@ function renderProducts(){
     document.getElementById("search").value
     || ""
   ).toLowerCase();
-
 
   const filtered =
   products.filter(product=>{
@@ -2585,13 +2434,11 @@ function renderProducts(){
 
   });
 
-
   document.getElementById("productCount")
   .textContent =
   filtered.length
   + " article"
   + (filtered.length > 1 ? "s" : "");
-
 
   document.getElementById("productGrid")
   .innerHTML =
@@ -2629,7 +2476,6 @@ function renderProducts(){
 
       </div>
 
-
       <div class="productInfo">
 
         <div class="brandName">
@@ -2644,7 +2490,7 @@ function renderProducts(){
         </div>
 
         <div class="price">
-          ${priceHtml(product)}
+          ${money(product.price)}
         </div>
 
         <button
@@ -2661,7 +2507,6 @@ function renderProducts(){
   `).join("");
 }
 
-
 function category(button,cat){
 
   document
@@ -2677,7 +2522,6 @@ function category(button,cat){
   renderProducts();
 }
 
-
 /* =========================
    FICHE PRODUIT
 ========================= */
@@ -2690,7 +2534,6 @@ function openProduct(id){
   );
 
   if(!product) return;
-
 
   document.getElementById("productDetail")
   .innerHTML = `
@@ -2710,7 +2553,7 @@ function openProduct(id){
       </h2>
 
       <div class="price">
-        ${priceHtml(product)}
+        ${money(product.price)}
       </div>
 
       <p class="detailDesc">
@@ -2746,7 +2589,6 @@ function openProduct(id){
   showPage("detail");
 }
 
-
 /* =========================
    FAVORIS
 ========================= */
@@ -2778,7 +2620,6 @@ function toggleFavorite(event,id){
   renderFavorites();
 }
 
-
 function toggleFavoriteFromDetail(id){
 
   toggleFavorite(null,id);
@@ -2786,14 +2627,12 @@ function toggleFavoriteFromDetail(id){
   openProduct(id);
 }
 
-
 function openFavorites(){
 
   renderFavorites();
 
   showPage("favorites");
 }
-
 
 function renderFavorites(){
 
@@ -2805,7 +2644,6 @@ function renderFavorites(){
     product=>
     favorites.includes(product.id)
   );
-
 
   if(!list.length){
 
@@ -2829,12 +2667,6 @@ function renderFavorites(){
 
     return;
   }
-        </div>
-    `;
-
-    return;
-  }
-
 
   container.innerHTML =
   list.map(product=>`
@@ -2858,8 +2690,8 @@ function renderFavorites(){
           ${product.name}
         </h3>
 
-        <strong class="favoritePrice">
-          ${priceHtml(product)}
+        <strong>
+          ${money(product.price)}
         </strong>
 
         <div class="favoriteActions">
@@ -2894,7 +2726,6 @@ function renderFavorites(){
   `).join("");
 }
 
-
 /* =========================
    PANIER
 ========================= */
@@ -2923,7 +2754,6 @@ function addCart(id){
   toast("Produit ajouté au panier");
 }
 
-
 function changeQty(id,difference){
 
   const item =
@@ -2948,7 +2778,6 @@ function changeQty(id,difference){
   renderCart();
 }
 
-
 function removeCart(id){
 
   cart =
@@ -2961,14 +2790,12 @@ function removeCart(id){
   renderCart();
 }
 
-
 function showCart(){
 
   showPage("cart");
 
   renderCart();
 }
-
 
 function renderCart(){
 
@@ -2977,7 +2804,6 @@ function renderCart(){
 
   const totalContainer =
   document.getElementById("cartTotal");
-
 
   if(!cart.length){
 
@@ -3003,9 +2829,7 @@ function renderCart(){
     return;
   }
 
-
   let total = 0;
-
 
   container.innerHTML =
   cart.map(item=>{
@@ -3017,15 +2841,10 @@ function renderCart(){
 
     if(!product) return "";
 
-
-    const unitPrice =
-    effectivePrice(product);
-
     const subtotal =
-    unitPrice * item.qty;
+    product.price * item.qty;
 
     total += subtotal;
-
 
     return `
 
@@ -3055,7 +2874,6 @@ function renderCart(){
 
         </div>
 
-
         <div class="qtyRow">
 
           <div class="qty">
@@ -3078,7 +2896,6 @@ function renderCart(){
 
           </div>
 
-
           <button
             class="removeBtn"
             onclick="removeCart(${product.id})"
@@ -3093,7 +2910,6 @@ function renderCart(){
     `;
 
   }).join("");
-
 
   totalContainer.innerHTML = `
 
@@ -3122,7 +2938,6 @@ function renderCart(){
   `;
 }
 
-
 function checkout(){
 
   if(!cart.length){
@@ -3136,7 +2951,6 @@ function checkout(){
 
   showPage("checkout");
 }
-
 
 /* =========================
    PROFIL
@@ -3155,7 +2969,6 @@ function openProfile(){
 
   showPage("profile");
 }
-
 
 function saveProfile(){
 
@@ -3177,7 +2990,6 @@ function saveProfile(){
   navigate("account");
 }
 
-
 /* =========================
    ADRESSE
 ========================= */
@@ -3198,7 +3010,6 @@ function openAddress(){
 
   showPage("address");
 }
-
 
 function saveAddress(){
 
@@ -3222,7 +3033,6 @@ function saveAddress(){
 
   navigate("account");
 }
-
 
 /* =========================
    CHECKOUT
@@ -3252,7 +3062,6 @@ function fillCheckoutFromProfile(){
   profile.zip || "";
 }
 
-
 function updateAccountSummary(){
 
   profileSummary.textContent =
@@ -3266,7 +3075,6 @@ function updateAccountSummary(){
 
   : "Ajouter mes informations";
 
-
   addressSummary.textContent =
   profile.address
 
@@ -3279,7 +3087,6 @@ function updateAccountSummary(){
 
   : "Ajouter mon adresse";
 
-
   favoriteSummary.textContent =
   favorites.length
   + " produit"
@@ -3287,7 +3094,6 @@ function updateAccountSummary(){
   + " favori"
   + (favorites.length > 1 ? "s" : "");
 }
-
 
 /* =========================
    CRÉATION COMMANDE
@@ -3319,7 +3125,6 @@ function placeOrder(){
   const note =
   customerNote.value.trim();
 
-
   if(
     !firstName
     ||
@@ -3339,7 +3144,6 @@ function placeOrder(){
     return;
   }
 
-
   Object.assign(
     profile,
     {
@@ -3355,10 +3159,8 @@ function placeOrder(){
 
   saveProfileStorage();
 
-
   let total = 0;
   let items = [];
-
 
   cart.forEach(item=>{
 
@@ -3369,14 +3171,8 @@ function placeOrder(){
 
     if(!product) return;
 
-
-    const unitPrice =
-    effectivePrice(product);
-
-
     total +=
-    unitPrice * item.qty;
-
+    product.price * item.qty;
 
     items.push({
 
@@ -3386,14 +3182,13 @@ function placeOrder(){
 
       brand:product.brand,
 
-      price:unitPrice,
+      price:product.price,
 
       qty:item.qty
 
     });
 
   });
-
 
   orders.unshift({
 
@@ -3424,7 +3219,6 @@ function placeOrder(){
 
   });
 
-
   saveOrders();
 
   cart = [];
@@ -3440,7 +3234,6 @@ function placeOrder(){
   navigate("orders");
 }
 
-
 /* =========================
    COMMANDES CLIENT
 ========================= */
@@ -3451,7 +3244,6 @@ function renderCustomerOrders(){
   document.getElementById(
     "customerOrders"
   );
-
 
   if(!orders.length){
 
@@ -3474,7 +3266,6 @@ function renderCustomerOrders(){
 
     return;
   }
-
 
   container.innerHTML =
   orders.map(order=>`
@@ -3529,7 +3320,6 @@ function renderCustomerOrders(){
   `).join("");
 }
 
-
 /* =========================
    NAVIGATION
 ========================= */
@@ -3542,17 +3332,14 @@ function showPage(page){
     element.classList.remove("active")
   );
 
-
   const element =
   document.getElementById(
     page + "Page"
   );
 
-
   if(element){
     element.classList.add("active");
   }
-
 
   const normalPages = [
     "products",
@@ -3560,18 +3347,15 @@ function showPage(page){
     "account"
   ];
 
-
   bottomNav.style.display =
   normalPages.includes(page)
   ? "grid"
   : "none";
 
-
   searchArea.style.display =
   page === "products"
   ? "block"
   : "none";
-
 
   window.scrollTo({
     top:0,
@@ -3579,18 +3363,15 @@ function showPage(page){
   });
 }
 
-
 function navigate(page){
 
   showPage(page);
-
 
   document
   .querySelectorAll(".navBtn")
   .forEach(element=>
     element.classList.remove("active")
   );
-
 
   if(page === "products"){
 
@@ -3599,14 +3380,12 @@ function navigate(page){
     renderProducts();
   }
 
-
   if(page === "orders"){
 
     navOrders.classList.add("active");
 
     renderCustomerOrders();
   }
-
 
   if(page === "account"){
 
@@ -3615,7 +3394,6 @@ function navigate(page){
     updateAccountSummary();
   }
 }
-
 
 /* =========================
    MENU
@@ -3626,7 +3404,6 @@ function openMenu(){
   overlay.classList.add("show");
 }
 
-
 function closeMenu(event){
 
   if(event.target.id === "overlay"){
@@ -3634,7 +3411,6 @@ function closeMenu(event){
     overlay.classList.remove("show");
   }
 }
-
 
 /* =========================
    ADMIN
@@ -3653,12 +3429,10 @@ function admin(){
   renderAdminOrders();
 }
 
-
 function leaveAdmin(){
 
   navigate("products");
 }
-
 
 function adminTab(tab){
 
@@ -3668,13 +3442,11 @@ function adminTab(tab){
     element.classList.remove("active")
   );
 
-
   document
   .querySelectorAll(".adminPanel")
   .forEach(element=>
     element.classList.remove("active")
   );
-
 
   if(tab === "products"){
 
@@ -3698,7 +3470,6 @@ function adminTab(tab){
   }
 }
 
-
 /* =========================
    PRODUITS ADMIN
 ========================= */
@@ -3709,7 +3480,6 @@ function renderAdminProducts(){
   document.getElementById(
     "adminProductList"
   );
-
 
   if(!products.length){
 
@@ -3726,7 +3496,6 @@ function renderAdminProducts(){
 
     return;
   }
-
 
   container.innerHTML =
   products.map(product=>`
@@ -3749,14 +3518,13 @@ function renderAdminProducts(){
             ${product.name}
           </h3>
 
-          <p class="adminPriceDisplay">
-            ${priceHtml(product)}
+          <p>
+            ${money(product.price)}
           </p>
 
         </div>
 
       </div>
-
 
       <div class="adminActions">
 
@@ -3781,7 +3549,6 @@ function renderAdminProducts(){
   `).join("");
 }
 
-
 function newProduct(){
 
   modalTitle.textContent =
@@ -3794,8 +3561,6 @@ function newProduct(){
   adminName.value = "";
 
   adminPrice.value = "";
-
-  adminPromoPrice.value = "";
 
   adminCategory.value = "sacs";
 
@@ -3812,7 +3577,6 @@ function newProduct(){
   productModal.classList.add("show");
 }
 
-
 function editProduct(id){
 
   const product =
@@ -3821,7 +3585,6 @@ function editProduct(id){
   );
 
   if(!product) return;
-
 
   modalTitle.textContent =
   "Modifier le produit";
@@ -3838,9 +3601,7 @@ function editProduct(id){
   adminPrice.value =
   product.price;
 
-  adminPromoPrice.value =
-  product.promoPrice ?? "";
-    adminCategory.value =
+  adminCategory.value =
   product.cat;
 
   adminBadge.value =
@@ -3861,12 +3622,10 @@ function editProduct(id){
   productModal.classList.add("show");
 }
 
-
 function closeProductModal(){
 
   productModal.classList.remove("show");
 }
-
 
 /* =========================
    PHOTO PRODUIT
@@ -3879,7 +3638,6 @@ function previewProductPhoto(event){
 
   if(!file) return;
 
-
   if(
     !file.type.startsWith("image/")
   ){
@@ -3889,16 +3647,13 @@ function previewProductPhoto(event){
     return;
   }
 
-
   const reader =
   new FileReader();
-
 
   reader.onload = event=>{
 
     const image =
     new Image();
-
 
     image.onload = ()=>{
 
@@ -3912,7 +3667,6 @@ function previewProductPhoto(event){
 
       let height =
       image.height;
-
 
       if(
         width > height
@@ -3937,13 +3691,11 @@ function previewProductPhoto(event){
         height = max;
       }
 
-
       canvas.width =
       width;
 
       canvas.height =
       height;
-
 
       canvas
       .getContext("2d")
@@ -3955,28 +3707,23 @@ function previewProductPhoto(event){
         height
       );
 
-
       temporaryPhoto =
       canvas.toDataURL(
         "image/jpeg",
         .82
       );
 
-
       updatePhotoPreview(
         temporaryPhoto
       );
     };
 
-
     image.src =
     event.target.result;
   };
 
-
   reader.readAsDataURL(file);
 }
-
 
 function updatePhotoPreview(photo){
 
@@ -3988,7 +3735,6 @@ function updatePhotoPreview(photo){
   : "📷 Aucune photo";
 }
 
-
 function removeProductPhoto(){
 
   temporaryPhoto = "";
@@ -3999,7 +3745,6 @@ function removeProductPhoto(){
 
   toast("Photo retirée");
 }
-
 
 /* =========================
    ENREGISTRER PRODUIT
@@ -4021,14 +3766,6 @@ function saveProduct(){
     adminPrice.value
   );
 
-  const promoRaw =
-  adminPromoPrice.value.trim();
-
-  const promoPrice =
-  promoRaw === ""
-  ? null
-  : parseFloat(promoRaw);
-
   const cat =
   adminCategory.value;
 
@@ -4037,7 +3774,6 @@ function saveProduct(){
 
   const description =
   adminDescription.value.trim();
-
 
   if(
     !brand
@@ -4054,39 +3790,6 @@ function saveProduct(){
     return;
   }
 
-
-  if(
-    promoRaw !== ""
-    &&
-    (
-      isNaN(promoPrice)
-      ||
-      promoPrice <= 0
-    )
-  ){
-
-    toast(
-      "Prix promo invalide"
-    );
-
-    return;
-  }
-
-
-  if(
-    promoPrice !== null
-    &&
-    promoPrice >= price
-  ){
-
-    toast(
-      "Le prix promo doit être inférieur au prix normal"
-    );
-
-    return;
-  }
-
-
   if(id){
 
     const product =
@@ -4094,7 +3797,6 @@ function saveProduct(){
       item=>
       item.id === Number(id)
     );
-
 
     if(product){
 
@@ -4104,7 +3806,6 @@ function saveProduct(){
           brand,
           name,
           price,
-          promoPrice,
           cat,
           badge,
           description,
@@ -4125,8 +3826,6 @@ function saveProduct(){
 
       price,
 
-      promoPrice,
-
       cat,
 
       emoji:"👜",
@@ -4139,7 +3838,6 @@ function saveProduct(){
 
     });
   }
-
 
   try{
 
@@ -4154,7 +3852,6 @@ function saveProduct(){
     return;
   }
 
-
   renderProducts();
 
   renderAdminProducts();
@@ -4166,7 +3863,6 @@ function saveProduct(){
   toast("Produit enregistré");
 }
 
-
 /* =========================
    SUPPRIMER PRODUIT
 ========================= */
@@ -4177,7 +3873,6 @@ function deleteProduct(id){
   products.find(
     item=>item.id === id
   );
-
 
   if(
     !product
@@ -4192,24 +3887,20 @@ function deleteProduct(id){
     return;
   }
 
-
   products =
   products.filter(
     item=>item.id !== id
   );
-
 
   cart =
   cart.filter(
     item=>item.id !== id
   );
 
-
   favorites =
   favorites.filter(
     item=>item !== id
   );
-
 
   saveProducts();
 
@@ -4226,7 +3917,6 @@ function deleteProduct(id){
   toast("Produit supprimé");
 }
 
-
 /* =========================
    COMMANDES ADMIN
 ========================= */
@@ -4237,7 +3927,6 @@ function renderAdminOrders(){
   document.getElementById(
     "adminOrderList"
   );
-
 
   if(!orders.length){
 
@@ -4260,7 +3949,6 @@ function renderAdminOrders(){
 
     return;
   }
-
 
   container.innerHTML =
   orders.map(order=>`
@@ -4328,7 +4016,6 @@ function renderAdminOrders(){
 
       </div>
 
-
       <div class="adminActions">
 
         <button
@@ -4359,7 +4046,6 @@ function renderAdminOrders(){
   `).join("");
 }
 
-
 function changeOrderStatus(
   id,
   status
@@ -4372,10 +4058,8 @@ function changeOrderStatus(
 
   if(!order) return;
 
-
   order.status =
   status;
-
 
   saveOrders();
 
@@ -4389,7 +4073,6 @@ function changeOrderStatus(
   );
 }
 
-
 function deleteOrder(id){
 
   if(
@@ -4401,12 +4084,10 @@ function deleteOrder(id){
     return;
   }
 
-
   orders =
   orders.filter(
     item=>item.id !== id
   );
-
 
   saveOrders();
 
@@ -4416,7 +4097,6 @@ function deleteOrder(id){
 
   toast("Commande supprimée");
 }
-
 
 /* =========================
    DÉMARRAGE
@@ -4431,7 +4111,6 @@ renderProducts();
 renderCustomerOrders();
 
 renderFavorites();
-
 
 window.addEventListener(
   "load",
@@ -4452,9 +4131,7 @@ window.addEventListener(
 );
 
 </script>
-
-
-<!-- ==========================================
+  <!-- ==========================================
      CODE 4 — ACCÈS BOUTIQUE + ACCÈS ADMIN
 =========================================== -->
 
@@ -4568,7 +4245,6 @@ window.addEventListener(
   font-size:12px;
 }
 
-
 /* ===== CONNEXION ADMIN ===== */
 
 #adminLoginLock{
@@ -4639,7 +4315,6 @@ window.addEventListener(
 
 </style>
 
-
 <!-- ==========================================
      ÉCRAN CODE D'ENTRÉE BOUTIQUE
 =========================================== -->
@@ -4688,7 +4363,6 @@ window.addEventListener(
   </div>
 
 </div>
-
 
 <!-- ==========================================
      CONNEXION ADMIN
@@ -4749,7 +4423,6 @@ window.addEventListener(
 
 </div>
 
-
 <script>
 
 /* ==========================================
@@ -4758,7 +4431,6 @@ window.addEventListener(
 
 const SHOP_ACCESS_CODE =
 "Lagalerieshop25";
-
 
 function unlockShop(){
 
@@ -4771,7 +4443,6 @@ function unlockShop(){
   document.getElementById(
     "shopLockError"
   );
-
 
   if(input.value === SHOP_ACCESS_CODE){
 
@@ -4799,7 +4470,6 @@ function unlockShop(){
   }
 }
 
-
 document
 .getElementById("shopPassword")
 .addEventListener(
@@ -4812,7 +4482,6 @@ document
 
   }
 );
-
 
 /* ==========================================
    HASH ADMIN
@@ -4840,7 +4509,6 @@ async function hashAdminValue(value){
   .join("");
 }
 
-
 /* ==========================================
    PREMIÈRE CONFIGURATION ADMIN
 =========================================== */
@@ -4858,7 +4526,6 @@ function adminIsConfigured(){
   );
 }
 
-
 function openAdminLogin(){
 
   const box =
@@ -4874,13 +4541,2005 @@ function openAdminLogin(){
   const button =
   box.querySelector(".lockButton");
 
-
   document.getElementById(
     "adminLoginError"
   ).textContent = "";
 
-
   document.getElementById(
     "adminLoginUser"
   ).value = "";
-  
+
+  document.getElementById(
+    "adminLoginPassword"
+  ).value = "";
+
+  if(adminIsConfigured()){
+
+    description.textContent =
+    "Entrez vos identifiants pour accéder à l'administration.";
+
+    button.textContent =
+    "SE CONNECTER";
+
+  }else{
+
+    description.textContent =
+    "Première connexion : choisissez votre identifiant et votre mot de passe administrateur.";
+
+    button.textContent =
+    "CRÉER MON ACCÈS ADMIN";
+  }
+
+  box.classList.add("show");
+
+  setTimeout(()=>{
+
+    document
+    .getElementById(
+      "adminLoginUser"
+    )
+    .focus();
+
+  },150);
+}
+
+function closeAdminLogin(){
+
+  document
+  .getElementById(
+    "adminLoginLock"
+  )
+  .classList.remove("show");
+}
+
+/* ==========================================
+   VALIDATION ADMIN
+=========================================== */
+
+async function adminLoginSubmit(){
+
+  const username =
+  document
+  .getElementById(
+    "adminLoginUser"
+  )
+  .value
+  .trim();
+
+  const password =
+  document
+  .getElementById(
+    "adminLoginPassword"
+  )
+  .value;
+
+  const error =
+  document.getElementById(
+    "adminLoginError"
+  );
+
+  error.textContent = "";
+
+  if(
+    !username
+    ||
+    !password
+  ){
+
+    error.textContent =
+    "Remplissez l'identifiant et le mot de passe.";
+
+    return;
+  }
+
+  /* PREMIÈRE CONFIGURATION */
+
+  if(!adminIsConfigured()){
+
+    if(password.length < 8){
+
+      error.textContent =
+      "Choisissez un mot de passe d'au moins 8 caractères.";
+
+      return;
+    }
+
+    const passwordHash =
+    await hashAdminValue(password);
+
+    localStorage.setItem(
+      "lg25_admin_user",
+      username
+    );
+
+    localStorage.setItem(
+      "lg25_admin_password_hash",
+      passwordHash
+    );
+
+    sessionStorage.setItem(
+      "lg25_admin_session",
+      "yes"
+    );
+
+    closeAdminLogin();
+
+    openRealAdmin();
+
+    toast(
+      "Accès administrateur créé"
+    );
+
+    return;
+  }
+
+  /* CONNEXIONS SUIVANTES */
+
+  const savedUsername =
+  localStorage.getItem(
+    "lg25_admin_user"
+  );
+
+  const savedPasswordHash =
+  localStorage.getItem(
+    "lg25_admin_password_hash"
+  );
+
+  const enteredPasswordHash =
+  await hashAdminValue(password);
+
+  if(
+    username === savedUsername
+    &&
+    enteredPasswordHash === savedPasswordHash
+  ){
+
+    sessionStorage.setItem(
+      "lg25_admin_session",
+      "yes"
+    );
+
+    closeAdminLogin();
+
+    openRealAdmin();
+
+  }else{
+
+    error.textContent =
+    "Identifiant ou mot de passe incorrect.";
+
+    document
+    .getElementById(
+      "adminLoginPassword"
+    )
+    .value = "";
+  }
+}
+
+/* ==========================================
+   OUVERTURE ADMIN
+=========================================== */
+
+function openRealAdmin(){
+
+  overlay.classList.remove("show");
+
+  showPage("admin");
+
+  adminTab("products");
+
+  renderAdminProducts();
+
+  renderAdminOrders();
+
+  addAdminLogoutButton();
+}
+
+/*
+  On remplace l'ancienne fonction admin()
+  du CODE 3.
+
+  Maintenant cliquer sur Administration
+  demande obligatoirement la connexion.
+*/
+
+admin = function(){
+
+  overlay.classList.remove("show");
+
+  if(
+    sessionStorage.getItem(
+      "lg25_admin_session"
+    ) === "yes"
+  ){
+
+    openRealAdmin();
+
+  }else{
+
+    openAdminLogin();
+  }
+
+};
+
+/* ==========================================
+   DÉCONNEXION ADMIN
+=========================================== */
+
+function adminLogout(){
+
+  sessionStorage.removeItem(
+    "lg25_admin_session"
+  );
+
+  navigate("products");
+
+  toast(
+    "Administration déconnectée"
+  );
+}
+
+function addAdminLogoutButton(){
+
+  const header =
+  document.querySelector(
+    "#adminPage .adminHeader"
+  );
+
+  if(
+    !header
+    ||
+    document.getElementById(
+      "adminLogoutButton"
+    )
+  ){
+
+    return;
+  }
+
+  const button =
+  document.createElement("button");
+
+  button.id =
+  "adminLogoutButton";
+
+  button.className =
+  "adminLogoutButton";
+
+  button.textContent =
+  "🔒 Déconnexion";
+
+  button.onclick =
+  adminLogout;
+
+  header.appendChild(button);
+}
+
+/* ==========================================
+   TOUCHE ENTRÉE ADMIN
+=========================================== */
+
+document
+.getElementById(
+  "adminLoginPassword"
+)
+.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Enter"){
+
+      adminLoginSubmit();
+    }
+
+  }
+);
+
+/* ==========================================
+   AFFICHAGE DU VERROU APRÈS LE SPLASH
+=========================================== */
+
+window.addEventListener(
+  "load",
+  ()=>{
+
+    if(
+      sessionStorage.getItem(
+        "lg25_shop_access"
+      ) !== "yes"
+    ){
+
+      setTimeout(()=>{
+
+        document
+        .getElementById(
+          "shopLock"
+        )
+        .classList.add("show");
+
+      },1900);
+
+    }
+
+  }
+);
+
+</script>
+<!-- =====================================================
+     CODE 5 — LA GALERIE 25
+     ULTRA LUXURY / GOLD NEON / DESIGN ONLY
+     AUCUNE LOGIQUE MODIFIÉE
+====================================================== -->
+
+<style>
+
+/* =====================================================
+   VARIABLES LUXURY
+====================================================== */
+
+:root{
+  --lg-black:#020202;
+  --lg-black2:#070604;
+  --lg-card:#0c0905;
+  --lg-card2:#171006;
+
+  --lg-gold:#d79a2b;
+  --lg-gold2:#ffd76c;
+  --lg-gold3:#fff0ae;
+  --lg-gold4:#fff8d8;
+
+  --lg-border:rgba(255,214,105,.32);
+  --lg-border2:rgba(255,235,161,.55);
+
+  --lg-glow:
+    0 0 10px rgba(255,205,72,.22),
+    0 0 28px rgba(255,185,38,.12);
+
+  --lg-glow-strong:
+    0 0 12px rgba(255,225,130,.38),
+    0 0 35px rgba(255,190,40,.25),
+    0 0 70px rgba(189,112,10,.15);
+}
+
+/* =====================================================
+   FOND GLOBAL
+====================================================== */
+
+html,
+body{
+  background:#020202 !important;
+}
+
+body{
+  position:relative;
+  overflow-x:hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(255,207,74,.16),
+      transparent 27%
+    ),
+
+    radial-gradient(
+      circle at 105% 32%,
+      rgba(255,174,24,.10),
+      transparent 26%
+    ),
+
+    radial-gradient(
+      circle at -10% 72%,
+      rgba(255,208,72,.07),
+      transparent 25%
+    ),
+
+    linear-gradient(
+      180deg,
+      #020202 0%,
+      #070502 45%,
+      #020202 100%
+    ) !important;
+
+  background-attachment:fixed !important;
+}
+
+/* halos lumineux décoratifs */
+
+body:before{
+  content:"";
+  position:fixed;
+  pointer-events:none;
+  z-index:-1;
+
+  width:420px;
+  height:420px;
+
+  left:-220px;
+  top:32%;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,198,56,.09),
+      transparent 68%
+    );
+
+  filter:blur(20px);
+
+  animation:
+    lgAmbient1 8s ease-in-out infinite alternate;
+}
+
+body:after{
+  content:"";
+  position:fixed;
+  pointer-events:none;
+  z-index:-1;
+
+  width:430px;
+  height:430px;
+
+  right:-240px;
+  top:60%;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,211,92,.08),
+      transparent 68%
+    );
+
+  filter:blur(22px);
+
+  animation:
+    lgAmbient2 10s ease-in-out infinite alternate;
+}
+
+@keyframes lgAmbient1{
+  from{
+    transform:translateY(-30px) scale(.9);
+    opacity:.55;
+  }
+
+  to{
+    transform:translateY(80px) scale(1.18);
+    opacity:1;
+  }
+}
+
+@keyframes lgAmbient2{
+  from{
+    transform:translateY(40px) scale(1);
+    opacity:.5;
+  }
+
+  to{
+    transform:translateY(-70px) scale(1.2);
+    opacity:1;
+  }
+}
+
+/* =====================================================
+   SPLASH — NOUVEL ÉCRAN DE CHARGEMENT
+====================================================== */
+
+#splash{
+  background:
+    radial-gradient(
+      circle at 50% 46%,
+      rgba(255,203,66,.20),
+      transparent 18%
+    ),
+
+    radial-gradient(
+      circle at 50% 46%,
+      rgba(163,93,8,.13),
+      transparent 38%
+    ),
+
+    radial-gradient(
+      ellipse at center,
+      #0a0702 0%,
+      #020202 58%,
+      #000 100%
+    ) !important;
+
+  overflow:hidden !important;
+}
+
+/* grand cercle lumineux */
+
+#splash:before{
+  content:"" !important;
+
+  position:absolute !important;
+
+  width:290px !important;
+  height:290px !important;
+
+  border-radius:50% !important;
+
+  border:
+    1px solid
+    rgba(255,223,126,.26) !important;
+
+  background:
+    radial-gradient(
+      circle,
+      transparent 54%,
+      rgba(255,207,69,.025) 55%,
+      transparent 72%
+    ) !important;
+
+  box-shadow:
+    0 0 25px rgba(255,206,69,.12),
+    0 0 75px rgba(214,135,18,.08),
+    inset 0 0 30px rgba(255,215,99,.05) !important;
+
+  animation:
+    lgSplashRing 3s ease-in-out infinite !important;
+}
+
+/* second cercle rotatif */
+
+#splash:after{
+  content:"" !important;
+
+  position:absolute !important;
+
+  width:245px !important;
+  height:245px !important;
+
+  border-radius:50% !important;
+
+  border:
+    1px solid
+    rgba(255,206,82,.10) !important;
+
+  border-top-color:
+    rgba(255,239,172,.55) !important;
+
+  border-bottom-color:
+    rgba(203,126,18,.32) !important;
+
+  box-shadow:
+    0 0 30px rgba(255,191,39,.08) !important;
+
+  animation:
+    lgSplashSpin 9s linear infinite !important;
+}
+
+@keyframes lgSplashRing{
+
+  0%,100%{
+    transform:scale(.96);
+    opacity:.55;
+  }
+
+  50%{
+    transform:scale(1.06);
+    opacity:1;
+  }
+}
+
+@keyframes lgSplashSpin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+.splashInner{
+  position:relative !important;
+  z-index:5 !important;
+
+  animation:
+    lgSplashAppear
+    .9s
+    cubic-bezier(.16,.9,.22,1)
+    both !important;
+}
+
+@keyframes lgSplashAppear{
+
+  from{
+    opacity:0;
+    transform:
+      scale(.78)
+      translateY(18px);
+    filter:blur(7px);
+  }
+
+  to{
+    opacity:1;
+    transform:
+      scale(1)
+      translateY(0);
+    filter:blur(0);
+  }
+}
+
+.splashCrown{
+  display:block !important;
+
+  font-size:48px !important;
+
+  color:#ffe797 !important;
+
+  margin-bottom:20px !important;
+
+  text-shadow:
+    0 0 8px rgba(255,244,196,.75),
+    0 0 25px rgba(255,207,71,.50),
+    0 0 55px rgba(204,126,15,.35) !important;
+
+  filter:
+    drop-shadow(
+      0 0 16px
+      rgba(255,209,77,.45)
+    ) !important;
+
+  animation:
+    lgCrownFloat
+    2.2s
+    ease-in-out
+    infinite !important;
+}
+
+@keyframes lgCrownFloat{
+
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-7px);
+  }
+}
+
+.splashTitle{
+  display:block !important;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif !important;
+
+  font-size:
+    clamp(29px,8vw,38px) !important;
+
+  letter-spacing:6px !important;
+
+  white-space:nowrap !important;
+
+  background:
+    linear-gradient(
+      105deg,
+      #8d5916 0%,
+      #d99f32 18%,
+      #fff4bf 43%,
+      #ffe08a 55%,
+      #c98420 78%,
+      #fff0aa 100%
+    ) !important;
+
+  background-size:
+    220% 100% !important;
+
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+
+  color:transparent !important;
+
+  filter:
+    drop-shadow(
+      0 0 13px
+      rgba(255,205,69,.24)
+    ) !important;
+
+  animation:
+    lgGoldText
+    4s
+    ease-in-out
+    infinite !important;
+}
+
+@keyframes lgGoldText{
+
+  0%,100%{
+    background-position:0% 50%;
+  }
+
+  50%{
+    background-position:100% 50%;
+  }
+}
+
+.splashSub{
+  margin-top:15px !important;
+
+  color:#c89a45 !important;
+
+  font-size:9px !important;
+
+  font-weight:700 !important;
+
+  letter-spacing:5px !important;
+
+  text-shadow:
+    0 0 12px
+    rgba(255,197,57,.28) !important;
+}
+
+.splashLine{
+  position:relative !important;
+
+  width:190px !important;
+  height:2px !important;
+
+  margin-top:28px !important;
+
+  overflow:hidden !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #82500e,
+      #ffe9a1,
+      #82500e,
+      transparent
+    ) !important;
+
+  box-shadow:
+    0 0 15px
+    rgba(255,205,65,.42) !important;
+}
+
+.splashLine:after{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  bottom:0;
+
+  width:45%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #fff,
+      #fff2bd,
+      transparent
+    );
+
+  filter:
+    drop-shadow(
+      0 0 8px #ffd15c
+    );
+
+  animation:
+    lgLoading
+    1.4s
+    ease-in-out
+    infinite;
+}
+
+@keyframes lgLoading{
+
+  from{
+    left:-55%;
+  }
+
+  to{
+    left:115%;
+  }
+}
+
+/* =====================================================
+   HEADER
+====================================================== */
+
+.header{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2,2,2,.97),
+      rgba(8,5,2,.91)
+    ) !important;
+
+  border-bottom:
+    1px solid
+    rgba(255,218,113,.25) !important;
+
+  backdrop-filter:
+    blur(25px)
+    saturate(140%) !important;
+
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.65),
+    0 1px 20px rgba(255,189,34,.07) !important;
+}
+
+.header:after{
+  content:"" !important;
+
+  display:block !important;
+
+  height:1px !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #9b6418,
+      #ffe69a,
+      #9b6418,
+      transparent
+    ) !important;
+
+  box-shadow:
+    0 0 18px
+    rgba(255,204,67,.40) !important;
+}
+
+/* logo / titre */
+
+.brandTitle{
+  background:
+    linear-gradient(
+      100deg,
+      #b6771e,
+      #fff1ae,
+      #d89a2d,
+      #fff6ca
+    ) !important;
+
+  background-size:
+    200% 100% !important;
+
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+
+  color:transparent !important;
+
+  text-shadow:none !important;
+
+  filter:
+    drop-shadow(
+      0 0 9px
+      rgba(255,206,74,.24)
+    ) !important;
+
+  animation:
+    lgGoldText
+    5s ease-in-out infinite !important;
+}
+
+.brandSub{
+  color:#c8973f !important;
+
+  text-shadow:
+    0 0 10px
+    rgba(255,197,55,.25) !important;
+}
+
+/* boutons menu + panier */
+
+.iconBtn{
+  position:relative !important;
+
+  overflow:hidden !important;
+
+  color:#ffe9a0 !important;
+
+  border:
+    1px solid
+    rgba(255,220,125,.42) !important;
+
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      #30200d,
+      #0b0804 65%,
+      #050403
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 0 15px rgba(255,198,46,.13),
+    0 8px 25px rgba(0,0,0,.50) !important;
+
+  transition:
+    transform .2s,
+    box-shadow .2s !important;
+}
+
+.iconBtn:active{
+  transform:scale(.90) !important;
+
+  box-shadow:
+    0 0 28px
+    rgba(255,203,61,.35) !important;
+}
+
+/* compteur panier */
+
+.cartCount{
+  background:
+    linear-gradient(
+      135deg,
+      #fff3b5,
+      #e5aa38
+    ) !important;
+
+  box-shadow:
+    0 0 13px
+    rgba(255,208,75,.65) !important;
+}
+
+/* =====================================================
+   RECHERCHE
+====================================================== */
+
+.search,
+.field{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(25,18,9,.96),
+      rgba(5,5,4,.98)
+    ) !important;
+
+  border:
+    1px solid
+    rgba(255,218,115,.28) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.035),
+    0 10px 25px rgba(0,0,0,.22) !important;
+}
+
+.search:focus,
+.field:focus{
+  border-color:
+    rgba(255,229,146,.75) !important;
+
+  box-shadow:
+    0 0 0 2px rgba(255,211,88,.08),
+    0 0 25px rgba(255,192,37,.12) !important;
+}
+
+/* =====================================================
+   HERO
+====================================================== */
+
+.heroBox{
+  position:relative !important;
+
+  overflow:hidden !important;
+
+  border-radius:30px !important;
+
+  border:
+    1px solid
+    rgba(255,222,126,.43) !important;
+
+  background:
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(255,226,137,.25),
+      transparent 23%
+    ),
+
+    radial-gradient(
+      circle at 8% 100%,
+      rgba(186,111,16,.18),
+      transparent 31%
+    ),
+
+    linear-gradient(
+      135deg,
+      #231707,
+      #0b0804 48%,
+      #030303
+    ) !important;
+
+  box-shadow:
+    0 24px 65px rgba(0,0,0,.55),
+    0 0 30px rgba(255,195,39,.11),
+    inset 0 1px 0 rgba(255,246,205,.09) !important;
+}
+
+/* rayon qui traverse */
+
+.heroBox:before{
+  content:"" !important;
+
+  position:absolute !important;
+
+  inset:-80% -100% !important;
+
+  pointer-events:none !important;
+
+  background:
+    linear-gradient(
+      110deg,
+      transparent 43%,
+      rgba(255,232,164,.04) 47%,
+      rgba(255,255,255,.25) 50%,
+      rgba(255,220,123,.07) 53%,
+      transparent 58%
+    ) !important;
+
+  animation:
+    lgHeroSweep
+    5.5s
+    ease-in-out
+    infinite !important;
+}
+
+@keyframes lgHeroSweep{
+
+  0%,55%{
+    transform:translateX(-40%);
+  }
+
+  85%,100%{
+    transform:translateX(40%);
+  }
+}
+
+.heroSmall{
+  color:#e4ad43 !important;
+
+  text-shadow:
+    0 0 9px
+    rgba(255,204,68,.24) !important;
+}
+
+.hero h1{
+  color:#fffaf0 !important;
+
+  text-shadow:
+    0 3px 18px rgba(0,0,0,.55) !important;
+}
+
+.hero h1 span{
+  background:
+    linear-gradient(
+      90deg,
+      #b9781e,
+      #ffe69a 45%,
+      #fff5c9 55%,
+      #c98421
+    ) !important;
+
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+
+  color:transparent !important;
+
+  filter:
+    drop-shadow(
+      0 0 10px
+      rgba(255,203,62,.22)
+    ) !important;
+}
+
+/* =====================================================
+   CATÉGORIES
+====================================================== */
+
+.cat{
+  border:
+    1px solid
+    rgba(255,211,98,.22) !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #120e08,
+      #070604
+    ) !important;
+
+  color:#b9ad99 !important;
+
+  box-shadow:
+    inset 0 1px
+    rgba(255,255,255,.025) !important;
+}
+
+.cat.active{
+  position:relative !important;
+
+  overflow:hidden !important;
+
+  color:#080502 !important;
+
+  border-color:
+    rgba(255,238,177,.75) !important;
+
+  background:
+    linear-gradient(
+      105deg,
+      #9b6117,
+      #e7ad3d 28%,
+      #fff1a9 52%,
+      #d79329 76%,
+      #8c5413
+    ) !important;
+
+  box-shadow:
+    0 0 18px rgba(255,205,68,.26),
+    0 8px 24px rgba(0,0,0,.28) !important;
+}
+
+/* =====================================================
+   TITRES
+====================================================== */
+
+.sectionTitle h2,
+.pageTitle,
+.detailInfo h2,
+.accountCard h2,
+.formCard h2,
+.adminHeader h1,
+.adminTitle h2{
+
+  background:
+    linear-gradient(
+      100deg,
+      #fff8dc,
+      #f5d377 42%,
+      #bd7c20 75%,
+      #fff0a9
+    ) !important;
+
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+
+  color:transparent !important;
+
+  filter:
+    drop-shadow(
+      0 0 8px
+      rgba(255,201,54,.13)
+    ) !important;
+}
+
+/* =====================================================
+   CARTES PRODUITS
+====================================================== */
+
+.product{
+  position:relative !important;
+
+  overflow:hidden !important;
+
+  border-radius:24px !important;
+
+  border:
+    1px solid
+    rgba(255,216,108,.31) !important;
+
+  background:
+    linear-gradient(
+      150deg,
+      rgba(29,20,9,.98),
+      rgba(6,6,5,.99) 72%
+    ) !important;
+
+  box-shadow:
+    0 18px 42px rgba(0,0,0,.45),
+    0 0 20px rgba(255,196,39,.06),
+    inset 0 1px 0 rgba(255,241,191,.045) !important;
+
+  transition:
+    transform .22s,
+    border-color .22s,
+    box-shadow .22s !important;
+}
+
+.product:active{
+  transform:
+    scale(.975)
+    translateY(2px) !important;
+
+  border-color:
+    rgba(255,229,147,.65) !important;
+
+  box-shadow:
+    0 12px 35px rgba(0,0,0,.48),
+    0 0 32px rgba(255,196,38,.17) !important;
+}
+
+.productImage{
+  position:relative !important;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      #4b3518,
+      #1a1107 45%,
+      #060504 80%
+    ) !important;
+}
+
+/* reflet animé photo */
+
+.productImage:before{
+  content:"" !important;
+
+  position:absolute !important;
+
+  inset:0 !important;
+
+  z-index:2 !important;
+
+  pointer-events:none !important;
+
+  background:
+    linear-gradient(
+      115deg,
+      transparent 25%,
+      rgba(255,242,192,.03) 40%,
+      rgba(255,255,255,.13) 48%,
+      transparent 62%
+    ) !important;
+
+  transform:
+    translateX(-130%) !important;
+
+  animation:
+    lgCardShine
+    6.5s
+    ease-in-out
+    infinite !important;
+}
+
+@keyframes lgCardShine{
+
+  0%,70%{
+    transform:translateX(-130%);
+  }
+
+  92%,100%{
+    transform:translateX(130%);
+  }
+}
+
+.productImage img{
+  transition:
+    transform .4s ease,
+    filter .4s ease !important;
+}
+
+.product:active
+.productImage img{
+  transform:scale(1.035) !important;
+}
+
+/* badge */
+
+.badge{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(2,2,2,.93),
+      rgba(42,28,9,.92)
+    ) !important;
+
+  border:
+    1px solid
+    rgba(255,229,147,.48) !important;
+
+  color:#ffe9a0 !important;
+
+  backdrop-filter:
+    blur(12px) !important;
+
+  box-shadow:
+    0 0 16px
+    rgba(255,202,55,.16) !important;
+}
+
+/* cœur */
+
+.heart{
+  background:
+    rgba(5,4,2,.82) !important;
+
+  border:
+    1px solid
+    rgba(255,225,137,.37) !important;
+
+  backdrop-filter:
+    blur(10px) !important;
+
+  box-shadow:
+    0 5px 18px
+    rgba(0,0,0,.40) !important;
+}
+
+.heart.active{
+  color:#ffe792 !important;
+
+  box-shadow:
+    0 0 18px
+    rgba(255,204,67,.38) !important;
+}
+
+/* prix */
+
+.price{
+  background:
+    linear-gradient(
+      90deg,
+      #d59a2d,
+      #fff1ac,
+      #d39329
+    ) !important;
+
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+
+  color:transparent !important;
+
+  filter:
+    drop-shadow(
+      0 0 6px
+      rgba(255,202,56,.16)
+    ) !important;
+}
+
+/* =====================================================
+   BOUTONS
+====================================================== */
+
+.add,
+.goldBtn,
+.adminAdd,
+.adminAction,
+.miniBtn,
+.backBtn,
+.adminBack{
+
+  border:
+    1px solid
+    rgba(255,219,120,.33) !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #261a0b,
+      #0d0a06
+    ) !important;
+
+  color:#ffe9a0 !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.045),
+    0 8px 22px rgba(0,0,0,.25) !important;
+}
+
+.goldBtn.primary{
+  position:relative !important;
+
+  overflow:hidden !important;
+
+  color:#090602 !important;
+
+  border:
+    1px solid
+    rgba(255,244,196,.65) !important;
+
+  background:
+    linear-gradient(
+      105deg,
+      #8f5915 0%,
+      #d89a2d 22%,
+      #ffe794 44%,
+      #fff5c3 52%,
+      #d89b2e 72%,
+      #8c5614 100%
+    ) !important;
+
+  background-size:
+    190% 100% !important;
+
+  box-shadow:
+    0 0 18px rgba(255,202,57,.22),
+    0 10px 28px rgba(0,0,0,.34),
+    inset 0 1px 0 rgba(255,255,255,.55) !important;
+
+  animation:
+    lgButtonGlow
+    3.5s
+    ease-in-out
+    infinite !important;
+}
+
+@keyframes lgButtonGlow{
+
+  0%,100%{
+    background-position:0% 50%;
+
+    box-shadow:
+      0 0 14px rgba(255,202,57,.20),
+      0 10px 28px rgba(0,0,0,.34);
+  }
+
+  50%{
+    background-position:100% 50%;
+
+    box-shadow:
+      0 0 30px rgba(255,207,70,.38),
+      0 10px 28px rgba(0,0,0,.34);
+  }
+}
+
+/* =====================================================
+   PANIER / COMMANDES / COMPTE / ADMIN
+====================================================== */
+
+.cartItem,
+.orderCard,
+.adminCard,
+.totalBox,
+.formCard,
+.accountCard,
+.favoriteCard{
+
+  border:
+    1px solid
+    rgba(255,216,108,.27) !important;
+
+  background:
+    radial-gradient(
+      circle at 90% 0%,
+      rgba(255,216,107,.06),
+      transparent 27%
+    ),
+
+    linear-gradient(
+      145deg,
+      rgba(24,17,9,.98),
+      rgba(6,6,5,.99)
+    ) !important;
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.37),
+    0 0 20px rgba(255,194,34,.035),
+    inset 0 1px 0 rgba(255,242,195,.04) !important;
+}
+
+/* compte */
+
+.avatar{
+  border:
+    1px solid
+    rgba(255,239,177,.58) !important;
+
+  background:
+    radial-gradient(
+      circle at 32% 25%,
+      #fff8d8,
+      #e1a73c 48%,
+      #67400f 100%
+    ) !important;
+
+  box-shadow:
+    0 0 0 6px rgba(255,203,60,.025),
+    0 0 24px rgba(255,207,72,.23),
+    0 0 55px rgba(196,115,13,.12) !important;
+}
+
+.accountRow{
+  position:relative !important;
+
+  overflow:hidden !important;
+
+  border:
+    1px solid
+    rgba(255,215,104,.22) !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(29,21,11,.97),
+      rgba(8,7,5,.99)
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255,240,191,.035),
+    0 10px 25px
+    rgba(0,0,0,.20) !important;
+}
+
+.accountRow:active{
+  border-color:
+    rgba(255,228,143,.62) !important;
+
+  box-shadow:
+    0 0 24px
+    rgba(255,197,38,.11) !important;
+}
+
+.accountIcon{
+  color:#ffe89e !important;
+
+  border:
+    1px solid
+    rgba(255,224,132,.33) !important;
+
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(255,237,176,.15),
+      rgba(207,139,29,.04) 60%,
+      transparent
+    ) !important;
+
+  box-shadow:
+    0 0 14px
+    rgba(255,202,57,.07) !important;
+}
+
+/* =====================================================
+   ADMIN
+====================================================== */
+
+.adminTab{
+  background:
+    linear-gradient(
+      145deg,
+      #151008,
+      #070604
+    ) !important;
+
+  border:
+    1px solid
+    rgba(255,214,102,.25) !important;
+}
+
+.adminTab.active{
+  color:#080502 !important;
+
+  background:
+    linear-gradient(
+      105deg,
+      #a66a1a,
+      #e9b044,
+      #fff0a7,
+      #c78121
+    ) !important;
+
+  box-shadow:
+    0 0 25px
+    rgba(255,203,62,.25) !important;
+}
+
+/* =====================================================
+   MENU LATÉRAL
+====================================================== */
+
+.drawer{
+  background:
+    radial-gradient(
+      circle at 30% 5%,
+      rgba(255,211,92,.12),
+      transparent 24%
+    ),
+
+    linear-gradient(
+      180deg,
+      #110c05,
+      #030303
+    ) !important;
+
+  border-right:
+    1px solid
+    rgba(255,218,113,.31) !important;
+
+  box-shadow:
+    20px 0 70px
+    rgba(0,0,0,.85) !important;
+}
+
+.drawerLogo h2{
+  background:
+    linear-gradient(
+      90deg,
+      #d09329,
+      #fff1ac,
+      #c67f20
+    ) !important;
+
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+
+  color:transparent !important;
+}
+
+/* =====================================================
+   NAVIGATION BAS
+====================================================== */
+
+.bottomNav{
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(26,18,8,.96),
+      rgba(5,5,4,.98)
+    ) !important;
+
+  border:
+    1px solid
+    rgba(255,220,121,.36) !important;
+
+  backdrop-filter:
+    blur(25px)
+    saturate(145%) !important;
+
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.78),
+    0 0 28px rgba(255,195,34,.08),
+    inset 0 1px 0 rgba(255,240,189,.055) !important;
+}
+
+.navBtn{
+  color:#766f64 !important;
+
+  transition:
+    color .2s,
+    transform .2s !important;
+}
+
+.navBtn.active{
+  color:#ffeaa2 !important;
+
+  text-shadow:
+    0 0 9px rgba(255,214,91,.55),
+    0 0 20px rgba(255,187,27,.22) !important;
+
+  transform:
+    translateY(-1px) !important;
+}
+
+.navBtn.active:before{
+  height:3px !important;
+
+  width:38px !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #e3a536,
+      #fff2b3,
+      #e3a536,
+      transparent
+    ) !important;
+
+  box-shadow:
+    0 0 9px #ffd25f,
+    0 0 24px rgba(255,197,38,.60) !important;
+}
+
+/* =====================================================
+   MODALE
+====================================================== */
+
+.modal{
+  background:
+    radial-gradient(
+      circle at 85% 0%,
+      rgba(255,218,115,.09),
+      transparent 25%
+    ),
+
+    linear-gradient(
+      145deg,
+      #130e07,
+      #050504
+    ) !important;
+
+  border:
+    1px solid
+    rgba(255,220,123,.34) !important;
+
+  box-shadow:
+    0 30px 90px #000,
+    0 0 35px
+    rgba(255,195,35,.08) !important;
+}
+
+/* =====================================================
+   CODE D'ENTRÉE — CODE 4
+====================================================== */
+
+#shopLock{
+  background:
+    radial-gradient(
+      circle at 50% 37%,
+      rgba(255,205,65,.17),
+      transparent 22%
+    ),
+
+    radial-gradient(
+      circle at 50% 60%,
+      rgba(157,91,9,.10),
+      transparent 35%
+    ),
+
+    #020202 !important;
+}
+
+.lockBox{
+  position:relative !important;
+
+  overflow:hidden !important;
+
+  border:
+    1px solid
+    rgba(255,224,135,.42) !important;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255,219,118,.10),
+      transparent 30%
+    ),
+
+    linear-gradient(
+      150deg,
+      rgba(25,17,8,.97),
+      rgba(5,5,4,.99)
+    ) !important;
+
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.80),
+    0 0 30px rgba(255,197,36,.11),
+    inset 0 1px 0 rgba(255,244,197,.07) !important;
+}
+
+.lockBox:before{
+  content:"";
+
+  position:absolute;
+
+  inset:-70% -120%;
+
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      110deg,
+      transparent 44%,
+      rgba(255,238,181,.03) 48%,
+      rgba(255,255,255,.18) 50%,
+      transparent 56%
+    );
+
+  animation:
+    lgLockSweep
+    6s ease-in-out infinite;
+}
+
+@keyframes lgLockSweep{
+
+  0%,65%{
+    transform:translateX(-35%);
+  }
+
+  90%,100%{
+    transform:translateX(35%);
+  }
+}
+
+.lockCrown{
+  color:#ffea9d !important;
+
+  text-shadow:
+    0 0 10px rgba(255,232,155,.70),
+    0 0 30px rgba(255,198,42,.42) !important;
+
+  animation:
+    lgCrownFloat
+    2.2s ease-in-out infinite !important;
+}
+
+.lockBox h1,
+.adminLoginBox h2{
+
+  background:
+    linear-gradient(
+      90deg,
+      #c98420,
+      #fff1ad,
+      #d7982a
+    ) !important;
+
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+
+  color:transparent !important;
+
+  filter:
+    drop-shadow(
+      0 0 8px
+      rgba(255,204,63,.20)
+    ) !important;
+}
+
+.lockInput{
+  border:
+    1px solid
+    rgba(255,221,127,.34) !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #100c07,
+      #050504
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255,255,255,.03) !important;
+}
+
+.lockInput:focus{
+  border-color:
+    rgba(255,235,164,.78) !important;
+
+  box-shadow:
+    0 0 0 3px rgba(255,210,83,.06),
+    0 0 25px rgba(255,192,31,.15) !important;
+}
+
+.lockButton{
+  position:relative !important;
+
+  overflow:hidden !important;
+
+  background:
+    linear-gradient(
+      105deg,
+      #895312,
+      #d89b2e 25%,
+      #fff0a5 50%,
+      #d6992c 75%,
+      #855011
+    ) !important;
+
+  background-size:
+    190% 100% !important;
+
+  border:
+    1px solid
+    rgba(255,245,200,.65) !important;
+
+  box-shadow:
+    0 0 18px rgba(255,202,55,.23),
+    0 12px 30px rgba(0,0,0,.40) !important;
+
+  animation:
+    lgButtonGlow
+    3.5s ease-in-out infinite !important;
+}
+
+/* =====================================================
+   CONNEXION ADMIN CODE 4
+====================================================== */
+
+#adminLoginLock{
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(255,204,59,.14),
+      transparent 25%
+    ),
+
+    rgba(0,0,0,.96) !important;
+
+  backdrop-filter:
+    blur(25px) !important;
+}
+
+.adminLoginBox{
+  border:
+    1px solid
+    rgba(255,222,129,.42) !important;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255,220,120,.09),
+      transparent 30%
+    ),
+
+    linear-gradient(
+      150deg,
+      #181007,
+      #050504
+    ) !important;
+
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.85),
+    0 0 35px rgba(255,197,37,.10) !important;
+}
+
+/* =====================================================
+   TOAST
+====================================================== */
+
+.toast{
+  background:
+    linear-gradient(
+      105deg,
+      #d69a2d,
+      #fff0a9,
+      #d28e24
+    ) !important;
+
+  color:#090602 !important;
+
+  box-shadow:
+    0 0 25px
+    rgba(255,203,61,.32),
+    0 12px 35px
+    rgba(0,0,0,.50) !important;
+}
+
+/* =====================================================
+   PETITS ÉCRANS
+====================================================== */
+
+@media(max-width:390px){
+
+  .hero h1{
+    font-size:30px !important;
+  }
+
+  .splashTitle{
+    font-size:27px !important;
+    letter-spacing:4px !important;
+  }
+
+  #splash:before{
+    width:250px !important;
+    height:250px !important;
+  }
+
+  #splash:after{
+    width:215px !important;
+    height:215px !important;
+  }
+}
+
+/* =====================================================
+   ACCESSIBILITÉ
+====================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *:before,
+  *:after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+  }
+}
+
+</style>
+</body>
+</html>
