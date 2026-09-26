@@ -2131,7 +2131,22 @@ transition:none!important
       >
 
     </div>
+<div class="formGroup">
 
+  <label>
+    Prix promo (€) — facultatif
+  </label>
+
+  <input
+    class="field"
+    id="adminPromoPrice"
+    type="number"
+    min="0"
+    step="0.01"
+    placeholder="Ex. 149"
+  >
+
+</div>
     <div class="formGroup">
 
       <label>
@@ -2359,7 +2374,39 @@ function money(value){
   .toFixed(2)
   .replace(".",",") + " €";
 }
+function hasPromo(product){
 
+  const promo = Number(product.promoPrice);
+  const normal = Number(product.price);
+
+  return (
+    Number.isFinite(promo)
+    &&
+    promo > 0
+    &&
+    promo < normal
+  );
+}
+
+function effectivePrice(product){
+
+  return hasPromo(product)
+  ? Number(product.promoPrice)
+  : Number(product.price);
+}
+
+function priceHtml(product){
+
+  if(hasPromo(product)){
+
+    return `
+      <span class="oldPrice">${money(product.price)}</span>
+      <span class="promoPrice">${money(product.promoPrice)}</span>
+    `;
+  }
+
+  return `<span class="normalPrice">${money(product.price)}</span>`;
+}
 function toast(text){
 
   const element =
@@ -2490,7 +2537,7 @@ function renderProducts(){
         </div>
 
         <div class="price">
-          ${money(product.price)}
+          ${priceHtml(product)}
         </div>
 
         <button
@@ -2553,7 +2600,7 @@ function openProduct(id){
       </h2>
 
       <div class="price">
-        ${money(product.price)}
+        ${priceHtml(product)}
       </div>
 
       <p class="detailDesc">
@@ -2690,8 +2737,8 @@ function renderFavorites(){
           ${product.name}
         </h3>
 
-        <strong>
-          ${money(product.price)}
+        <strong class="favoritePrice">
+          ${priceHtml(product)}
         </strong>
 
         <div class="favoriteActions">
@@ -2841,8 +2888,8 @@ function renderCart(){
 
     if(!product) return "";
 
-    const subtotal =
-    product.price * item.qty;
+const subtotal =
+  effectivePrice(product) * item.qty;
 
     total += subtotal;
 
@@ -3172,7 +3219,7 @@ function placeOrder(){
     if(!product) return;
 
     total +=
-    product.price * item.qty;
+effectivePrice(product) * item.qty;
 
     items.push({
 
@@ -3182,7 +3229,7 @@ function placeOrder(){
 
       brand:product.brand,
 
-      price:product.price,
+      price:effectivePrice(product),
 
       qty:item.qty
 
@@ -3519,7 +3566,7 @@ function renderAdminProducts(){
           </h3>
 
           <p>
-            ${money(product.price)}
+            ${priceHtml(product)}
           </p>
 
         </div>
@@ -3600,7 +3647,10 @@ function editProduct(id){
 
   adminPrice.value =
   product.price;
-
+  
+adminPromoPrice.value = 
+ product.promoPrice ?? "";
+  
   adminCategory.value =
   product.cat;
 
@@ -3760,12 +3810,27 @@ function saveProduct(){
 
   const name =
   adminName.value.trim();
-
+const promoRaw = adminPromoPrice.value.trim();
+const promoPrice = promoRaw === "" ? null : parseFloat(promoRaw);
   const price =
   parseFloat(
     adminPrice.value
   );
+if (
+  promoPrice !== null &&
+  (isNaN(promoPrice) || promoPrice <= 0)
+) {
+  toast("Prix promo invalide");
+  return;
+}
 
+if (
+  promoPrice !== null &&
+  promoPrice >= price
+) {
+  toast("Le prix promo doit être inférieur au prix normal");
+  return;
+}
   const cat =
   adminCategory.value;
 
@@ -3806,6 +3871,7 @@ function saveProduct(){
           brand,
           name,
           price,
+          promoPrice,
           cat,
           badge,
           description,
@@ -3825,7 +3891,9 @@ function saveProduct(){
       name,
 
       price,
-
+      
+      promoPrice,
+      
       cat,
 
       emoji:"👜",
@@ -6539,7 +6607,116 @@ body:after{
     animation-iteration-count:1 !important;
   }
 }
+/* PRIX PROMOTIONNELS */
 
+.price{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.price .oldPrice,
+.favoritePrice .oldPrice,
+.adminPriceDisplay .oldPrice{
+  color:#8e8578 !important;
+  background:none !important;
+  -webkit-background-clip:initial !important;
+  background-clip:initial !important;
+  text-decoration:line-through;
+  text-decoration-thickness:1.5px;
+  font-size:12px;
+  opacity:.8;
+  filter:none !important;
+}
+
+.price .promoPrice,
+.favoritePrice .promoPrice,
+.adminPriceDisplay .promoPrice{
+  color:#fff1ac !important;
+  background:none !important;
+  -webkit-background-clip:initial !important;
+  background-clip:initial !important;
+  font-size:18px;
+  font-weight:800;
+  filter:none !important;
+}
+
+.favoritePrice,
+.adminPriceDisplay{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.price .normalPrice{
+  background:linear-gradient(
+    90deg,
+    #d59a2d,
+    #fff1ac,
+    #d39329
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent !important;
+}
+  /* =========================================
+   SPLASH — ANIMATION OR / JAUNE NÉON
+========================================= */
+
+#splash{
+  overflow:hidden;
+}
+
+#splash .logo,
+#splash img{
+  animation:goldNeonLaunch 1.8s ease-in-out infinite;
+}
+
+#splash::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255,220,70,.18) 0%,
+      rgba(255,185,0,.08) 32%,
+      transparent 65%
+    );
+  animation:goldAura 1.8s ease-in-out infinite;
+}
+
+@keyframes goldNeonLaunch{
+  0%,100%{
+    filter:
+      drop-shadow(0 0 4px #ffd900)
+      drop-shadow(0 0 10px #ffb700);
+    transform:scale(1);
+  }
+
+  50%{
+    filter:
+      drop-shadow(0 0 8px #fff6a0)
+      drop-shadow(0 0 20px #ffd000)
+      drop-shadow(0 0 38px #ff9d00);
+    transform:scale(1.035);
+  }
+}
+
+@keyframes goldAura{
+  0%,100%{
+    opacity:.35;
+    transform:scale(.92);
+  }
+
+  50%{
+    opacity:1;
+    transform:scale(1.08);
+  }
+}
 </style>
 </body>
 </html>
